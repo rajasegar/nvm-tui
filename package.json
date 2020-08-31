@@ -1,5 +1,5 @@
 {
-  "name": "nvmx",
+  "name": "nvm-tui",
   "version": "1.0.0",
   "description": "An advanced TUI for nvm",
   "main": "index.js",
