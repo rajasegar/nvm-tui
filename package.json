@@ -4,7 +4,8 @@
   "description": "An advanced TUI for nvm",
   "main": "index.js",
   "bin": {
-    "nvmx": "bin/cli.js"
+    "nvmx": "bin/cli.js",
+    "nvm-tui": "bin/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
