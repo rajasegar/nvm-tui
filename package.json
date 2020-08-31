@@ -1,7 +1,7 @@
 {
   "name": "nvmx",
   "version": "1.0.0",
-  "description": "",
+  "description": "An advanced TUI for nvm",
   "main": "index.js",
   "bin": {
     "nvmx": "bin/cli.js"
@@ -16,6 +16,7 @@
     "command-line"
   ],
   "author": "Rajasegar Chandran <rajasegar.c@gmail.com>",
+  "repository": "https://github.com/rajasegar/nvmx",
   "license": "MIT",
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.1",
