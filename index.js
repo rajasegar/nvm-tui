@@ -2,11 +2,11 @@
 
 const blessed = require('blessed');
 const path = require('path');
-const { exec, execFile, spawn } = require('child_process');
+const { exec, execFile } = require('child_process');
 const fs = require('fs');
 const Terminal = require('./src/widgets/terminal');
 
-module.exports = function() {
+module.exports = function () {
   const screen = blessed.screen({ fullUnicode: true });
   const bin = path.join(__dirname, 'bin', 'nvm');
 
@@ -21,9 +21,10 @@ module.exports = function() {
     fch: ' ',
     style: {
       fg: 'white',
-      bold: false
-    }
+      bold: false,
+    },
   });
+
   const info = blessed.box({
     parent: screen,
     label: 'info',
@@ -33,8 +34,8 @@ module.exports = function() {
     height: '30%',
     border: {
       type: 'line',
-      fg: 'white'
-    }
+      fg: 'white',
+    },
   });
 
   const lsBox = blessed.list({
@@ -46,21 +47,21 @@ module.exports = function() {
     height: '50%-4',
     border: {
       type: 'line',
-      fg: 'white'
+      fg: 'white',
     },
-    keys: true, 
+    keys: true,
     vi: true,
     style: {
       selected: {
         fg: 'black',
-        bg: 'white'
+        bg: 'white',
       },
       focus: {
         border: {
-          fg: 'yellow'
-        }
-      }
-    }
+          fg: 'yellow',
+        },
+      },
+    },
   });
 
   const selectVersions = blessed.list({
@@ -71,17 +72,17 @@ module.exports = function() {
     height: '50%',
     border: {
       type: 'line',
-      fg: 'white'
+      fg: 'white',
     },
-    keys: true, 
+    keys: true,
     vi: true,
     style: {
       selected: {
         fg: 'black',
-        bg: 'white'
+        bg: 'white',
       },
     },
-    hidden: true
+    hidden: true,
   });
 
   const prompt = blessed.prompt({
@@ -119,7 +120,6 @@ module.exports = function() {
       install: {
         keys: ['i'],
         callback: function () {
-
           prompt.input(`nvm install :`, '', function (err, value) {
             if (err) return;
             if (value) {
@@ -174,14 +174,13 @@ module.exports = function() {
     style: {
       focus: {
         border: {
-          fg: 'yellow'
-        }
-      }
+          fg: 'yellow',
+        },
+      },
     },
   });
   screen.append(terminal);
   screen.render();
-
 
   screen.append(info);
   screen.append(lsBox);
@@ -189,7 +188,7 @@ module.exports = function() {
   const versions = {
     node: '',
     npm: '',
-    nvm: ''
+    nvm: '',
   };
 
   function updateInfo() {
@@ -205,28 +204,29 @@ module.exports = function() {
     screen.render();
   }
 
-  exec('node -v', (err, stdout, stderr) => {
+  exec('node -v', (err, stdout) => {
     versions.node = stdout;
     updateInfo();
   });
 
-  exec('npm -v', (err, stdout, stderr) => {
+  exec('npm -v', (err, stdout) => {
     versions.npm = stdout;
     updateInfo();
   });
 
-  execFile(bin, ['--version'], (err, stdout, stderr) => {
+  execFile(bin, ['--version'], (err, stdout) => {
     versions.nvm = stdout;
     updateInfo();
   });
 
-  execFile(bin, ['current'], (err, stdout, stderr) => {
+  execFile(bin, ['current'], (err, stdout) => {
     versions.current = stdout;
     updateInfo();
   });
 
-
-  const installedVersions =  fs.readdirSync(`${process.env.NVM_DIR}/versions/node`);
+  const installedVersions = fs.readdirSync(
+    `${process.env.NVM_DIR}/versions/node`
+  );
   lsBox.setItems(installedVersions);
 
   screen.key('q', () => {
@@ -242,6 +242,8 @@ module.exports = function() {
     lsBox.focus();
   });
 
+  screen.append(logo);
+  screen.append(footer);
   screen.append(prompt);
   screen.render();
 };
