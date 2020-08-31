@@ -8,7 +8,8 @@ devDependencies:
   eslint: 7.7.0
   eslint-config-prettier: 6.11.0_eslint@7.7.0
   eslint-plugin-node: 11.1.0_eslint@7.7.0
-  eslint-plugin-prettier: 3.1.4_eslint@7.7.0
+  eslint-plugin-prettier: 3.1.4_eslint@7.7.0+prettier@2.1.1
+  prettier: 2.1.1
   semantic-release: 17.1.1_semantic-release@17.1.1
 lockfileVersion: 5.1
 packages:
@@ -821,9 +822,10 @@ packages:
       eslint: '>=5.16.0'
     resolution:
       integrity: sha512-oUwtPJ1W0SKD0Tr+wqu92c5xuCeQqB3hSCHasn/ZgjFdA9iDGNkNf2Zi9ztY7X+hNuMib23LNGRm6+uN+KLE3g==
-  /eslint-plugin-prettier/3.1.4_eslint@7.7.0:
+  /eslint-plugin-prettier/3.1.4_eslint@7.7.0+prettier@2.1.1:
     dependencies:
       eslint: 7.7.0
+      prettier: 2.1.1
       prettier-linter-helpers: 1.0.0
     dev: true
     engines:
@@ -2128,6 +2130,13 @@ packages:
       node: '>=6.0.0'
     resolution:
       integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==
+  /prettier/2.1.1:
+    dev: true
+    engines:
+      node: '>=10.13.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-9bY+5ZWCfqj3ghYBLxApy2zf6m+NJo5GzmLTpr9FsApsfjriNnS2dahWReHMi7qNPhhHl9SYHJs2cHZLgexNIw==
   /process-nextick-args/2.0.1:
     dev: true
     resolution:
@@ -2906,5 +2915,6 @@ specifiers:
   eslint-plugin-node: ^11.1.0
   eslint-plugin-prettier: ^3.1.4
   node-pty: ^0.9.0
+  prettier: ^2.1.1
   semantic-release: ^17.1.1
   term.js: ^0.0.7
