@@ -68,8 +68,8 @@ module.exports = function () {
     parent: screen,
     top: 'center',
     left: 'center',
-    width: '50%',
-    height: '50%',
+    width: '25%',
+    height: '25%',
     border: {
       type: 'line',
       fg: 'white',
@@ -83,9 +83,18 @@ module.exports = function () {
       },
     },
     hidden: true,
+    label: ' Select node version to uninstall: ',
   });
 
   const prompt = blessed.prompt({
+    parent: screen,
+    top: 'center',
+    left: 'center',
+    height: 'shrink',
+    width: 'shrink',
+    border: 'line',
+  });
+  const confirmDialog = blessed.question({
     parent: screen,
     top: 'center',
     left: 'center',
@@ -120,6 +129,7 @@ module.exports = function () {
       install: {
         keys: ['i'],
         callback: function () {
+          screen.append(prompt);
           prompt.input(`nvm install :`, '', function (err, value) {
             if (err) return;
             if (value) {
@@ -138,9 +148,23 @@ module.exports = function () {
           selectVersions.focus();
 
           selectVersions.on('select', (node) => {
-            const { content } = node;
+            screen.append(confirmDialog);
+            confirmDialog.ask(
+              'Are you sure want to delete the selected node version?',
+              (err, value) => {
+                //console.log(value);
+                if (value) {
+                  const { content } = node;
+                  selectVersions.detach();
+                  terminal.pty.write(`nvm uninstall ${content}\r\n`);
+                }
+              }
+            );
+          });
+
+          selectVersions.key('escape', () => {
             selectVersions.detach();
-            terminal.pty.write(`nvm uninstall ${content}\r\n`);
+            lsBox.focus();
           });
         },
       },
@@ -244,6 +268,5 @@ module.exports = function () {
 
   screen.append(logo);
   screen.append(footer);
-  screen.append(prompt);
   screen.render();
 };

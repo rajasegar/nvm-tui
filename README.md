@@ -27,3 +27,9 @@ You can also use npx to run:
 ```
 npx nvm-tui
 ```
+
+## Home screen
+![home](screenshots/home.png)
+
+## Install screen
+![home](screenshots/home.png)
