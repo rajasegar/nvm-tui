@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/rajasegar/nvm-tui/compare/v1.0.0...v1.0.1) (2020-09-01)
+
+
+### Bug Fixes
+
+* remove delete dialog on Esc ([1e3be92](https://github.com/rajasegar/nvm-tui/commit/1e3be928df9911f074c8eaf413a93fda26e0a49e))
+
 # 1.0.0 (2020-08-31)
 
 
