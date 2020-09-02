@@ -5,7 +5,14 @@
 [![npm version](http://img.shields.io/npm/v/nvm-tui.svg?style=flat)](https://npmjs.org/package/nvm-tui "View this project on npm")
 
 
-A TUI (Terminal User Interface) for [nvm](https://github.com/nvm-sh/nvm)
+A TUI (Terminal User Interface) for [nvm](https://github.com/nvm-sh/nvm) to save you
+a few keystrokes and make you 2x productive while working with nvm.
+
+## Features
+- List installed node versions and switch to one quickly
+- Install new node versions
+- Uninstall node versions
+- List remote versions in a separate terminal window
 
 
 ## Install
@@ -32,4 +39,4 @@ npx nvm-tui
 ![home](screenshots/home.png)
 
 ## Install screen
-![home](screenshots/home.png)
+![install](screenshots/install.png)
