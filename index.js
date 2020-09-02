@@ -5,9 +5,19 @@ const path = require('path');
 const { exec, execFile } = require('child_process');
 const fs = require('fs');
 const Terminal = require('./src/widgets/terminal');
+const Prompt = require('./src/widgets/prompt');
+const Question = require('./src/widgets/question');
+const colors = require('./src/themes/dracula');
+const theme = require('./src/styles')(colors);
 
 module.exports = function () {
-  const screen = blessed.screen({ fullUnicode: true });
+  const screen = blessed.screen({
+    fullUnicode: true,
+  });
+
+  const program = blessed.program();
+  program.bg(theme.program.bg);
+  program.fg(theme.program.fg);
   const bin = path.join(__dirname, 'bin', 'nvm');
 
   const logo = blessed.bigtext({
@@ -19,10 +29,7 @@ module.exports = function () {
     //height: '20%',
     border: 'line',
     fch: ' ',
-    style: {
-      fg: 'white',
-      bold: false,
-    },
+    style: theme.logo.style,
   });
 
   const info = blessed.box({
@@ -32,10 +39,7 @@ module.exports = function () {
     left: 0,
     width: '30%',
     height: '30%',
-    border: {
-      type: 'line',
-      fg: 'white',
-    },
+    border: theme.info.border,
   });
 
   const lsBox = blessed.list({
@@ -45,23 +49,10 @@ module.exports = function () {
     left: 0,
     width: '30%',
     height: '50%-4',
-    border: {
-      type: 'line',
-      fg: 'white',
-    },
+    border: theme.lsBox.border,
     keys: true,
     vi: true,
-    style: {
-      selected: {
-        fg: 'black',
-        bg: 'white',
-      },
-      focus: {
-        border: {
-          fg: 'yellow',
-        },
-      },
-    },
+    style: theme.lsBox.style,
   });
 
   const selectVersions = blessed.list({
@@ -70,37 +61,34 @@ module.exports = function () {
     left: 'center',
     width: '25%',
     height: '25%',
-    border: {
-      type: 'line',
-      fg: 'white',
-    },
+    border: theme.selectVersions.border,
     keys: true,
     vi: true,
-    style: {
-      selected: {
-        fg: 'black',
-        bg: 'white',
-      },
-    },
+    style: theme.selectVersions.style,
     hidden: true,
     label: ' Select node version to uninstall: ',
   });
 
-  const prompt = blessed.prompt({
+  const prompt = Prompt({
     parent: screen,
     top: 'center',
     left: 'center',
     height: 'shrink',
     width: 'shrink',
     border: 'line',
+    style: theme.prompt.style,
   });
-  const confirmDialog = blessed.question({
+
+  prompt._.okay.bg = 'white';
+
+  const confirmDialog = Question({
     parent: screen,
     top: 'center',
     left: 'center',
     height: 'shrink',
     width: 'shrink',
     border: 'line',
+    style: theme.confirmDialog.style,
   });
 
   const footer = blessed.listbar({
@@ -111,14 +99,9 @@ module.exports = function () {
     height: 'shrink',
     mouse: true,
     keys: true,
-    border: 'line',
+    border: theme.footer.border,
     vi: true,
-    style: {
-      selected: {
-        bg: 'white',
-        fg: 'black',
-      },
-    },
+    style: theme.footer.style,
     commands: {
       'list-remote': {
         keys: ['l'],
@@ -165,6 +148,7 @@ module.exports = function () {
           selectVersions.key('escape', () => {
             selectVersions.detach();
             lsBox.focus();
+            screen.render();
           });
         },
       },
@@ -188,20 +172,11 @@ module.exports = function () {
     left: '30%+1',
     width: '70%',
     height: '100%-3',
-    border: {
-      type: 'line',
-      fg: 'white',
-    },
+    border: theme.terminal.border,
     label: 'Terminal',
     fullUnicode: true,
     screenKeys: false,
-    style: {
-      focus: {
-        border: {
-          fg: 'yellow',
-        },
-      },
-    },
+    style: theme.terminal.style,
   });
   screen.append(terminal);
   screen.render();
@@ -254,7 +229,9 @@ module.exports = function () {
   lsBox.setItems(installedVersions);
 
   screen.key('q', () => {
-    return screen.destroy();
+    //return screen.destroy();
+
+    process.exit(0);  // eslint-disable-line
   });
 
   lsBox.focus();
