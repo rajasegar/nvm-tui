@@ -7,8 +7,11 @@ const fs = require('fs');
 const Terminal = require('./src/widgets/terminal');
 const Prompt = require('./src/widgets/prompt');
 const Question = require('./src/widgets/question');
-const colors = require('./src/themes/dracula');
-const theme = require('./src/styles')(colors);
+
+const options = require('minimist')(process.argv.slice(2));
+const scheme = options.theme || 'Dracula';
+const colors = require(`blessed-themes/themes/${scheme}`);
+const theme = require('./src/styles')(colors.colors);
 
 module.exports = function () {
   const screen = blessed.screen({
@@ -25,8 +28,7 @@ module.exports = function () {
     content: 'nvmx',
     shrink: true,
     width: '30%',
-    height: 'shrink',
-    //height: '20%',
+    height: '25%',
     border: 'line',
     fch: ' ',
     style: theme.logo.style,
@@ -35,10 +37,10 @@ module.exports = function () {
   const info = blessed.box({
     parent: screen,
     label: 'info',
-    top: '20%+1',
+    top: '25%+1',
     left: 0,
     width: '30%',
-    height: '30%',
+    height: '25%',
     border: theme.info.border,
   });
 

@@ -1,5 +1,7 @@
 dependencies:
   blessed: 0.1.81
+  blessed-themes: 1.0.2
+  minimist: 1.2.5
   node-pty: 0.9.0
   term.js: 0.0.7
 devDependencies:
@@ -441,6 +443,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-IWIbu7pMqyw3EAJHzzHbWa85b6oud/yfKYg5rqB5hNE8CeMi3nX+2C2sj0HswfblST86hpVEOAb9x34NZd6P7A==
+  /blessed-themes/1.0.2:
+    dependencies:
+      yaml: 1.10.0
+    dev: false
+    resolution:
+      integrity: sha512-wnJyoexdKZeRC2mkUqYTZlZbz09hSBGPd8CyJ2pCJHgRaGFqGoa78EJmg7M3d97PzKI9a6smCxcd5hXaM1SXFw==
   /blessed/0.1.81:
     dev: false
     engines:
@@ -1679,7 +1687,6 @@ packages:
     resolution:
       integrity: sha512-Q4r8ghd80yhO/0j1O3B2BjweX3fiHg9cdOwjJd2J76Q135c+NDxGCqdYKQ1SKBuFfgWbAUzBfvYjPUEeNgqN1A==
   /minimist/1.2.5:
-    dev: true
     resolution:
       integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
   /mkdirp/0.5.5:
@@ -2874,7 +2881,6 @@ packages:
     resolution:
       integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
   /yaml/1.10.0:
-    dev: true
     engines:
       node: '>= 6'
     resolution:
@@ -2910,10 +2916,12 @@ specifiers:
   '@semantic-release/changelog': ^5.0.1
   '@semantic-release/git': ^9.0.0
   blessed: ^0.1.81
+  blessed-themes: ^1.0.2
   eslint: ^7.7.0
   eslint-config-prettier: ^6.11.0
   eslint-plugin-node: ^11.1.0
   eslint-plugin-prettier: ^3.1.4
+  minimist: ^1.2.5
   node-pty: ^0.9.0
   prettier: ^2.1.1
   semantic-release: ^17.1.1
