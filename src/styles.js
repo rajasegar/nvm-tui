@@ -21,12 +21,12 @@ module.exports = function (colors) {
         fg: colors.primary.foreground,
         label: {
           bg: colors.primary.background,
-          fg: 'yellow',
+          fg: colors.normal.yellow,
         },
       },
       border: {
         type: 'line',
-        fg: colors.normal.green,
+        fg: colors.normal.yellow,
         bg: colors.primary.background,
       },
     },
@@ -52,14 +52,23 @@ module.exports = function (colors) {
             fg: colors.normal.blue,
           },
         },
+        label: {
+          bg: colors.primary.background,
+          fg: colors.normal.yellow,
+        },
       },
     },
     selectVersions: {
       style: {
         bg: colors.primary.background,
+        fg: colors.primary.foreground,
         selected: {
           fg: colors.primary.background,
           bg: colors.primary.foreground,
+        },
+        label: {
+          bg: colors.primary.background,
+          fg: colors.normal.yellow,
         },
       },
       border: {
@@ -94,6 +103,10 @@ module.exports = function (colors) {
           border: {
             fg: colors.normal.blue,
           },
+        },
+        label: {
+          bg: colors.primary.background,
+          fg: colors.normal.yellow,
         },
       },
     },

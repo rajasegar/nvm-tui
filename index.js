@@ -42,6 +42,7 @@ module.exports = function () {
     width: '30%',
     height: '25%',
     border: theme.info.border,
+    style: theme.info.style,
   });
 
   const lsBox = blessed.list({
