@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/rajasegar/nvm-tui/compare/v1.1.0...v1.2.0) (2020-09-03)
+
+
+### Features
+
+* implement themes using blessed-themes ([0bbb9b2](https://github.com/rajasegar/nvm-tui/commit/0bbb9b22547691aa4e0fabdc1f0ff58ce1dae012))
+
 # [1.1.0](https://github.com/rajasegar/nvm-tui/compare/v1.0.1...v1.1.0) (2020-09-02)
 
 
