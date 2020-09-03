@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/rajasegar/nvm-tui/compare/v1.2.0...v1.2.1) (2020-09-03)
+
+
+### Bug Fixes
+
+* some styles for lsbox and selectversions widget ([d422322](https://github.com/rajasegar/nvm-tui/commit/d4223225c5450500263ed4821ae849fab5ebc891))
+
 # [1.2.0](https://github.com/rajasegar/nvm-tui/compare/v1.1.0...v1.2.0) (2020-09-03)
 
 
