@@ -8,7 +8,6 @@ module.exports = function (colors) {
       style: {
         fg: colors.normal.red,
         bg: colors.primary.background,
-        bold: false,
         border: {
           fg: colors.primary.foreground,
           bg: colors.primary.background,
@@ -42,10 +41,6 @@ module.exports = function (colors) {
         selected: {
           fg: colors.primary.background,
           bg: colors.normal.yellow,
-          label: {
-            bg: colors.primary.background,
-            fg: 'yellow',
-          },
         },
         focus: {
           border: {
