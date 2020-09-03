@@ -48,4 +48,4 @@ If you want to load `nvm-tui` with any preferred theme you can do so by passing 
 nvm-tui --theme Gruvbox-Dark
 ```
 
-You can find the list of themes in [blessed-themes](github.com/rajasegar/blessed-themes). The default theme applied is `Dracula` which is a dark theme.
+You can find the list of themes in [blessed-themes](https://github.com/rajasegar/blessed-themes). The default theme applied is `Dracula` which is a dark theme.
